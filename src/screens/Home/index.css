@@ -1,4 +1,4 @@
-.top-home-page {
+.home-page {
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -53,5 +53,9 @@
 
 .order-button:hover {
   background-color: #c0392b;
+}
+
+.orders {
+  margin-top: -45vh;
 }
   

@@ -1,0 +1,65 @@
+.gallery-header{
+    width: 100%;
+    padding-left: 10px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card {
+  width: 300px;
+  height: 300px;
+  margin: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.details {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.details h5 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.details .company {
+  font-size: 0.875rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.price-duration {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.price-duration .duration,
+.price-duration .price,
+.price-duration .plus,
+.price-duration .delivery {
+  font-size: 0.875rem;
+  margin-right: 10px;
+}  

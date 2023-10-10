@@ -1,12 +1,13 @@
 import React from "react";
 import './index.css'
 import { Link } from "react-router-dom";
+import Orders from "./Orders";
 
 const Home = () => {
   const imageUrl = "https://www.saborusa.com/do/wp-content/uploads/sites/8/2019/11/Animate-a-disfrutar-una-deliciosa-pizza-de-salchicha-Foto-destacada.png";
   return (
     <>
-        <div className="top-home-page">
+        <div className="home-page">
           <div className="container">
             <div className="background-image-container">
               <img
@@ -21,8 +22,8 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="body-home-page">
-
+        <div className="orders">
+          <Orders/>
         </div>
     </>
   );
