@@ -7,7 +7,6 @@ const OrderPizza = () => {
    
   return (
     <>
-        <h1>PIZZA</h1>
         <Routes>
           <Route path="/" element={<OrderPizzaForm/>} />
           <Route path="review" element={<OrderReview/>} />

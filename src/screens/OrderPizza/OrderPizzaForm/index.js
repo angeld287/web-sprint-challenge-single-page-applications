@@ -1,27 +1,134 @@
-import React from "react";
+import React, { useState } from 'react';
+import './index.css'; // Make sure to link your CSS file
 
 const OrderPizzaForm = () => {
-    const createOrder = () => {
-        
-    }
-  return (
-    <>
-        <form id="pizza-form" onSubmit={createOrder}>
-            <input type="text" id="name-input"/>
-            <select id="size-dropdown">
-                <option value='small'>Small</option>
-                <option value='medium'>Medium</option>
-                <option value='large'>Large</option>
-            </select>
-            <input type="checkbox" id="toppings-1"/>
-            <input type="checkbox" id="toppings-2"/>
-            <input type="checkbox" id="toppings-3"/>
-            <input type="checkbox" id="toppings-4"/>
-            <input type="text" id="special-text"/>
+  const [name, setName] = useState('');
+  const [size, setSize] = useState('small');
+  const [toppings, setToppings] = useState({
+    toppings1: false,
+    toppings2: false,
+    toppings3: false,
+    toppings4: false
+  });
+  const [instructions, setInstructions] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
-            <button type="submit" id="order-button">Create Order</button>
-        </form>
-    </>
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    if (name.length < 2) {
+      setErrorMessage('Name must be at least 2 characters');
+    } else {
+      // Process form submission logic here
+      console.log('Form submitted:', { name, size, toppings, instructions });
+      // Reset form and error message
+      setName('');
+      setSize('small');
+      setToppings({
+        toppings1: false,
+        toppings2: false,
+        toppings3: false,
+        toppings4: false
+      });
+      setInstructions('');
+      setErrorMessage('');
+    }
+  };
+
+  return (
+    <div className="form-container">
+      <form className="form" onSubmit={handleFormSubmit}>
+        <div className="form-section">
+          <h2>Basic Information</h2>
+          <div className="form-group">
+            <label htmlFor="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="size">Pizza Size:</label>
+            <select
+              id="size"
+              name="size"
+              value={size}
+              onChange={(e) => setSize(e.target.value)}
+              required
+            >
+              <option value="small">Small</option>
+              <option value="medium">Medium</option>
+              <option value="large">Large</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="form-section">
+          <h2>Toppings</h2>
+          <div className="form-group">
+            <label>Toppings:</label>
+            <div className="checkbox-group">
+              <label>
+                <input
+                  type="checkbox"
+                  checked={toppings.toppings1}
+                  onChange={() => setToppings({ ...toppings, toppings1: !toppings.toppings1 })}
+                />
+                Toppings 1
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={toppings.toppings2}
+                  onChange={() => setToppings({ ...toppings, toppings2: !toppings.toppings2 })}
+                />
+                Toppings 2
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={toppings.toppings3}
+                  onChange={() => setToppings({ ...toppings, toppings3: !toppings.toppings3 })}
+                />
+                Toppings 3
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={toppings.toppings4}
+                  onChange={() => setToppings({ ...toppings, toppings4: !toppings.toppings4 })}
+                />
+                Toppings 4
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div className="form-section">
+          <h2>Special Instructions</h2>
+          <div className="form-group">
+            <label htmlFor="instructions">Instructions:</label>
+            <textarea
+              id="instructions"
+              name="instructions"
+              rows="4"
+              value={instructions}
+              onChange={(e) => setInstructions(e.target.value)}
+            ></textarea>
+          </div>
+        </div>
+
+        <div className="form-section">
+          <h2>Submission</h2>
+          <button type="submit" className="submit-button">Create Order</button>
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
+        </div>
+      </form>
+    </div>
   );
 };
+
 export default OrderPizzaForm;
