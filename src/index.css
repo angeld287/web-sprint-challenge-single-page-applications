@@ -7,7 +7,49 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+div {
+  border: 1px solid black;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.logo h4 {
+  color: #e74c3c;
+}
+
+.navigator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px 0px 10px;
+}
+
+.options nav {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.options button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.options button:hover {
+  opacity: 0.8;
+}
+
+
+.options .button-active {
+  background-color: #e74c3c;
+  /* Puedes ajustar los estilos del botón activo según tus necesidades */
 }
