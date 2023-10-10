@@ -10,7 +10,7 @@ const App = () => {
         <h1>Lambda Eats</h1>
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="pizza" element={<OrderPizza/>} />
+          <Route path="pizza/*" element={<OrderPizza/>} />
         </Routes>
       </BrowserRouter>
     </>
