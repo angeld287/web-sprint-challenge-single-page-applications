@@ -25,7 +25,7 @@ describe('Pizza test, sprint 7 challenge', () => {
     cy.visit('http://localhost:3000/pizza');
 
     cy.get('#pizza-form').should('be.visible');
-    cy.get('#name-input').should('be.visible').type('');
+    cy.get('#name-input').should('be.visible').type('a');
 
     cy.get('#order-button').should('be.visible').click();
 

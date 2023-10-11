@@ -5,10 +5,10 @@ const OrderPizzaForm = () => {
   const [name, setName] = useState('');
   const [size, setSize] = useState('small');
   const [toppings, setToppings] = useState({
-    toppings1: false,
-    toppings2: false,
-    toppings3: false,
-    toppings4: false
+    pepperoni: false,
+    grilledChicken: false,
+    canadianBacon: false,
+    greenPepper: false
   });
   const [instructions, setInstructions] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -16,7 +16,7 @@ const OrderPizzaForm = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (name.length < 2) {
-      setErrorMessage('Name must be at least 2 characters');
+      setErrorMessage('name must be at least 2 characters');
     } else {
       // Process form submission logic here
       console.log('Form submitted:', { name, size, toppings, instructions });
@@ -24,10 +24,10 @@ const OrderPizzaForm = () => {
       setName('');
       setSize('small');
       setToppings({
-        toppings1: false,
-        toppings2: false,
-        toppings3: false,
-        toppings4: false
+        pepperoni: false,
+        grilledChicken: false,
+        canadianBacon: false,
+        greenPepper: false
       });
       setInstructions('');
       setErrorMessage('');
@@ -36,17 +36,17 @@ const OrderPizzaForm = () => {
 
   return (
     <div className="form-container">
-      <form className="form" onSubmit={handleFormSubmit}>
+      <form id="pizza-form" className="form" onSubmit={handleFormSubmit}>
         <div className="form-section">
           <div className='session-header'>
             <h2>Basic Information</h2>
           </div>
           <div className='line-fields'>
             <div className="form-group name">
-              <label htmlFor="name">Name:</label>
+              <label htmlFor="name-input">Name:</label>
               <input
                 type="text"
-                id="name"
+                id="name-input"
                 name="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -54,10 +54,10 @@ const OrderPizzaForm = () => {
               />
             </div>
             <div className="form-group size">
-              <label htmlFor="size">Pizza Size:</label>
+              <label htmlFor="size-dropdown">Pizza Size:</label>
               <select
-                id="size"
-                name="size"
+                id="size-dropdown"
+                name="size-dropdown"
                 value={size}
                 onChange={(e) => setSize(e.target.value)}
                 required
@@ -79,32 +79,33 @@ const OrderPizzaForm = () => {
               <label>
                 <input
                   type="checkbox"
-                  checked={toppings.toppings1}
-                  onChange={() => setToppings({ ...toppings, toppings1: !toppings.toppings1 })}
+                  value='pepperoni'
+                  checked={toppings.pepperoni}
+                  onChange={() => setToppings({ ...toppings, pepperoni: !toppings.pepperoni })}
                 />
                 Pepperoni
               </label>
               <label>
                 <input
                   type="checkbox"
-                  checked={toppings.toppings2}
-                  onChange={() => setToppings({ ...toppings, toppings2: !toppings.toppings2 })}
+                  checked={toppings.grilledChicken}
+                  onChange={() => setToppings({ ...toppings, grilledChicken: !toppings.grilledChicken })}
                 />
                 Grilled Chicken
               </label>
               <label>
                 <input
                   type="checkbox"
-                  checked={toppings.toppings3}
-                  onChange={() => setToppings({ ...toppings, toppings3: !toppings.toppings3 })}
+                  checked={toppings.canadianBacon}
+                  onChange={() => setToppings({ ...toppings, canadianBacon: !toppings.canadianBacon })}
                 />
                 Canadian Bacon
               </label>
               <label>
                 <input
                   type="checkbox"
-                  checked={toppings.toppings4}
-                  onChange={() => setToppings({ ...toppings, toppings4: !toppings.toppings4 })}
+                  checked={toppings.greenPepper}
+                  onChange={() => setToppings({ ...toppings, greenPepper: !toppings.greenPepper })}
                 />
                 Green Pepper
               </label>
@@ -118,7 +119,7 @@ const OrderPizzaForm = () => {
           </div>
           <div className="form-group">
             <textarea
-              id="instructions"
+              id="special-text"
               name="instructions"
               rows="4"
               value={instructions}
@@ -131,7 +132,7 @@ const OrderPizzaForm = () => {
           <div className='session-header'>
             <h2>Submission</h2>
           </div>
-          <button type="submit" className="submit-button">Create Order</button>
+          <button type="submit" id="order-button" className="submit-button">Create Order</button>
           {errorMessage && <p className="error-message">{errorMessage}</p>}
         </div>
       </form>
