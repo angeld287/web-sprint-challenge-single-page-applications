@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './index.css'; // Make sure to link your CSS file
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +15,14 @@ const OrderPizzaForm = () => {
   const [instructions, setInstructions] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const navigator = useNavigate()
+
+  useEffect(() => {
+    if (name.length !== 0 && name.length < 2) {
+      setErrorMessage('name must be at least 2 characters');
+    } else{
+      setErrorMessage('');
+    }
+  }, [name]);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();

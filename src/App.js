@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import Home from "./screens/Home";
 import OrderPizza from "./screens/OrderPizza";
 
@@ -8,7 +8,6 @@ const App = () => {
 
   return (
     <>
-      <BrowserRouter>
         <div className="navigator">
           <div className="logo">
             <h4>BloomTech Eats</h4>
@@ -38,7 +37,6 @@ const App = () => {
           <Route path="/" element={<Home/>} />
           <Route path="pizza/*" element={<OrderPizza/>} />
         </Routes>
-      </BrowserRouter>
     </>
   );
 };
