@@ -1,3 +1,5 @@
+.form-container div{}
+
 .form-container {
   display: flex;
   justify-content: center;
@@ -16,6 +18,15 @@
   margin-bottom: 20px;
 }
 
+.session-header{
+    border: #e74c3c 2px dashed;
+    padding-left: 20px;
+}
+
+#instructions{
+    width: 100%;
+}
+
 h2 {
   font-size: 1.2rem;
   margin-bottom: 10px;
@@ -23,6 +34,7 @@ h2 {
 
 .form-group {
   margin-bottom: 15px;
+  padding: 20px;
 }
 
 .label {
@@ -50,6 +62,7 @@ h2 {
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
+  margin: 10px 10px;
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease;
@@ -63,4 +76,9 @@ h2 {
   color: red;
   margin-top: 10px;
   font-size: 0.875rem;
+}
+
+.name, .size{
+    display: inline-block;
+    margin-left: 10px;
 }

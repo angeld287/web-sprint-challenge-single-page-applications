@@ -38,38 +38,43 @@ const OrderPizzaForm = () => {
     <div className="form-container">
       <form className="form" onSubmit={handleFormSubmit}>
         <div className="form-section">
-          <h2>Basic Information</h2>
-          <div className="form-group">
-            <label htmlFor="name">Name:</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
+          <div className='session-header'>
+            <h2>Basic Information</h2>
           </div>
-          <div className="form-group">
-            <label htmlFor="size">Pizza Size:</label>
-            <select
-              id="size"
-              name="size"
-              value={size}
-              onChange={(e) => setSize(e.target.value)}
-              required
-            >
-              <option value="small">Small</option>
-              <option value="medium">Medium</option>
-              <option value="large">Large</option>
-            </select>
+          <div className='line-fields'>
+            <div className="form-group name">
+              <label htmlFor="name">Name:</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </div>
+            <div className="form-group size">
+              <label htmlFor="size">Pizza Size:</label>
+              <select
+                id="size"
+                name="size"
+                value={size}
+                onChange={(e) => setSize(e.target.value)}
+                required
+              >
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+                <option value="large">Large</option>
+              </select>
+            </div>
           </div>
         </div>
 
         <div className="form-section">
-          <h2>Toppings</h2>
+          <div className='session-header'>
+            <h2>Toppings</h2>
+          </div>
           <div className="form-group">
-            <label>Toppings:</label>
             <div className="checkbox-group">
               <label>
                 <input
@@ -77,7 +82,7 @@ const OrderPizzaForm = () => {
                   checked={toppings.toppings1}
                   onChange={() => setToppings({ ...toppings, toppings1: !toppings.toppings1 })}
                 />
-                Toppings 1
+                Pepperoni
               </label>
               <label>
                 <input
@@ -85,7 +90,7 @@ const OrderPizzaForm = () => {
                   checked={toppings.toppings2}
                   onChange={() => setToppings({ ...toppings, toppings2: !toppings.toppings2 })}
                 />
-                Toppings 2
+                Grilled Chicken
               </label>
               <label>
                 <input
@@ -93,7 +98,7 @@ const OrderPizzaForm = () => {
                   checked={toppings.toppings3}
                   onChange={() => setToppings({ ...toppings, toppings3: !toppings.toppings3 })}
                 />
-                Toppings 3
+                Canadian Bacon
               </label>
               <label>
                 <input
@@ -101,16 +106,17 @@ const OrderPizzaForm = () => {
                   checked={toppings.toppings4}
                   onChange={() => setToppings({ ...toppings, toppings4: !toppings.toppings4 })}
                 />
-                Toppings 4
+                Green Pepper
               </label>
             </div>
           </div>
         </div>
 
         <div className="form-section">
-          <h2>Special Instructions</h2>
+          <div className='session-header'>
+            <h2>Special Instructions</h2>
+          </div>
           <div className="form-group">
-            <label htmlFor="instructions">Instructions:</label>
             <textarea
               id="instructions"
               name="instructions"
@@ -122,7 +128,9 @@ const OrderPizzaForm = () => {
         </div>
 
         <div className="form-section">
-          <h2>Submission</h2>
+          <div className='session-header'>
+            <h2>Submission</h2>
+          </div>
           <button type="submit" className="submit-button">Create Order</button>
           {errorMessage && <p className="error-message">{errorMessage}</p>}
         </div>
