@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './index.css'; // Make sure to link your CSS file
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const OrderPizzaForm = () => {
   const [name, setName] = useState('');
@@ -12,27 +14,48 @@ const OrderPizzaForm = () => {
   });
   const [instructions, setInstructions] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const navigator = useNavigate()
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     if (name.length < 2) {
-      setErrorMessage('name must be at least 2 characters');
-    } else {
-      // Process form submission logic here
-      console.log('Form submitted:', { name, size, toppings, instructions });
-      // Reset form and error message
-      setName('');
-      setSize('small');
-      setToppings({
-        pepperoni: false,
-        grilledChicken: false,
-        canadianBacon: false,
-        greenPepper: false
-      });
-      setInstructions('');
-      setErrorMessage('');
+      return setErrorMessage('name must be at least 2 characters');
+    } 
+
+    try {
+
+      const createOrder = axios.request({
+          url: "https://reqres.in/api/orders",
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          data: JSON.stringify({ name, size, toppings, instructions })
+      })
+      console.log(createOrder);
+      cleanFields();
+      navigator('review')
+
+    } catch (error) {
+      cleanFields();
     }
+    // Process form submission logic here
+    console.log('Form submitted:', { name, size, toppings, instructions });
   };
+
+  const cleanFields = () => {
+    // Reset form and error message
+    setName('');
+    setSize('small');
+    setToppings({
+      pepperoni: false,
+      grilledChicken: false,
+      canadianBacon: false,
+      greenPepper: false
+    });
+    setInstructions('');
+    setErrorMessage('');
+  }
 
   return (
     <div className="form-container">
